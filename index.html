@@ -1,0 +1,128 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tabela FIPE</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="fipepwa.ico" />
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+  <link rel="stylesheet" href="styles/app.css" media="screen" title="no title">
+</head>
+
+<body ng-app="fipepwa">
+
+  <div layout="column" layout-fill ng-controller="HomeController as vm" ng-cloak>
+
+    <div class="ribbon-wrapper-green"><div class="ribbon-green">beta</div></div>
+
+    <md-toolbar md-scroll-shrink>
+      <div class="md-toolbar-tools">
+        <h3>
+          <md-icon md-font-set="material-icons">motorcycle</md-icon>
+          <span>Tabela FIPE <sup>motos</sup></span>
+        </h3>
+      </div>
+    </md-toolbar>
+
+    <md-content flex>
+
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Veículo</span>
+            <span class="md-subhead">Dados do seu veículo</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedFabricanteId" ng-change="vm.selectedModeloId = null" required>
+              <md-option ng-repeat="fabricante in vm.fabricantes" value="{{fabricante.id}}" placeholder="Selecione o fabricante">
+                {{fabricante.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedModeloId" md-on-open="vm.loadModelos()" ng-show="vm.selectedFabricanteId" required>
+              <md-option ng-repeat="modelo in vm.modelos" value="{{modelo.id}}" placeholder="Selecione o modelo">
+                {{modelo.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedAnoModeloId" md-on-open="vm.loadAnosModelo()" ng-show="vm.selectedModeloId" ng-change="vm.loadDadosVeiculo()" required>
+              <md-option ng-repeat="anoModelo in vm.anosModelo" value="{{anoModelo.id}}" placeholder="Selecione o ano do modelo">
+                {{anoModelo.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+      </md-card>
+
+      <md-card ng-if="vm.selectedVeiculo">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">FIPE</span>
+            <span class="md-subhead">Valor na tabela FIPE</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          {{vm.selectedVeiculo.preco}}
+        </md-card-content>
+      </md-card>
+
+    </md-content>
+
+  </div>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- App scripts -->
+  <script src="scripts/app.setup.js"></script>
+
+  <!-- AngularJS Scripts -->
+  <script src="scripts/app.module.js"></script>
+  <script src="scripts/app.config.js"></script>
+
+  <script src="scripts/fipe.service.js"></script>
+
+  <script src="scripts/home.controller.js"></script>
+
+  <!-- GoogleAnalytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    if (location.hostname !== 'localhost') {
+      ga('create', 'UA-86092412-1', 'auto');
+      ga('send', {
+        hitType: 'pageview',
+        page: location.hostname
+      });
+    } else {
+      console.debug('Google Analytcs disabled for localhost domain.');
+    }
+  </script>
+
+</body>
+
+</html>

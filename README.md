@@ -1,4 +1,4 @@
-# Tabela Picanço [Site](https://lennonjesus.gitlab.io/fipe-pwa)
+# Tabela Picanço [Site](https://lennonjesus.github.io/fipe-pwa/)
 
 Progressive Web Application (PWA) for Tabela FIPE Motos
 

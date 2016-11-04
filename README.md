@@ -17,7 +17,12 @@ npm install
 ### Run
 
 ```
-npm start lite
+npm start
+```
+
+### Build for production
+```
+npm run build
 ```
 
 ### Help! :-)
@@ -28,10 +33,11 @@ Requests](https://github.com/lennonjesus/fipe-pwa/pulls) welcome! Thanks!
 ### TODO
 
 - [ ] add tests
-- [ ] add webpack
-- [ ] concat and minify javascript
+- [x] ~~add webpack~~
+- [x] ~~concat and minify javascript~~
+- [ ] minify html
 - [ ] minify stylesheet
-- [ ] improves UI feedbacks
+- [x] ~~improves UI feedbacks~~
 
 ### Credits
 

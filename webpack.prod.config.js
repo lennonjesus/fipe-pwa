@@ -10,7 +10,6 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, "build"),
-    publicPath: "/build/",
     filename: "bundle.js"
   },
   module: {
@@ -30,5 +29,5 @@ module.exports = {
       }
     ]
   },
-  watch: true
+  watch: false
 };

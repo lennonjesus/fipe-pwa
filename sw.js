@@ -13,11 +13,7 @@ var filesToCache = [
   'https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js',
   'index.html',
   'fipepwa.ico',
-  'scripts/app.setup.js',
-  'scripts/app.module.js',
-  'scripts/app.config.js',
-  'scripts/fipe.service.js',
-  'scripts/home.controller.js',
+  'build/bundle.js',
   'styles/app.css'
 ];
 

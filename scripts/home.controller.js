@@ -18,7 +18,11 @@
     vm.init();
 
     function init() {
-      vm.loadFabricantes();
+
+      vm.tipos = [
+        { value: 'motos', label: 'Moto', icon: 'motorcycle' },
+        { value: 'carros', label: 'Carro', icon: 'directions_car' }
+      ];
 
       vm.veiculo = {};
       vm.fabricantes = [];
@@ -26,6 +30,7 @@
       vm.anosModelo = [];
       vm.veiculos = [];
 
+      vm.selectedTipoVeiculo = null;
       vm.selectedFabricanteId = null;
       vm.selectedModeloId = null;
       vm.selectedAnoModeloId = null;
@@ -34,7 +39,9 @@
     }
 
     function loadFabricantes() {
-      var promise = FipeService.loadFabricantes().then(data => {
+      vm.fabricantes = [];
+
+      var promise = FipeService.loadFabricantes(vm.selectedTipoVeiculo).then(data => {
         data.forEach(elm => {
           vm.fabricantes.push({
             id: elm.id,
@@ -49,7 +56,7 @@
     function loadModelos() {
       vm.modelos = [];
 
-      var promise = FipeService.loadModelos(vm.selectedFabricanteId).then(data => {
+      var promise = FipeService.loadModelos(vm.selectedTipoVeiculo, vm.selectedFabricanteId).then(data => {
         data.forEach(elm => {
           vm.modelos.push({
             id: elm.id,
@@ -64,7 +71,7 @@
     function loadAnosModelo() {
       vm.anosModelo = [];
 
-      var promise = FipeService.loadAnosModelo(vm.selectedFabricanteId, vm.selectedModeloId).then(data => {
+      var promise = FipeService.loadAnosModelo(vm.selectedTipoVeiculo, vm.selectedFabricanteId, vm.selectedModeloId).then(data => {
         data.forEach(elm => {
           vm.anosModelo.push({
             id: elm.id,
@@ -79,7 +86,7 @@
     function loadDadosVeiculo() {
       vm.selectedVeiculo = {};
 
-      var promise = FipeService.loadDadosVeiculo(vm.selectedFabricanteId, vm.selectedModeloId, vm.selectedAnoModeloId).then(data => {
+      var promise = FipeService.loadDadosVeiculo(vm.selectedTipoVeiculo, vm.selectedFabricanteId, vm.selectedModeloId, vm.selectedAnoModeloId).then(data => {
         vm.selectedVeiculo = data;
       });
 

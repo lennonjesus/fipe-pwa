@@ -26,10 +26,8 @@
 
     <md-toolbar md-scroll-shrink>
       <div class="md-toolbar-tools">
-        <h3>
-          <md-icon md-font-set="material-icons">motorcycle</md-icon>
-          <span>Tabela FIPE <sup>motos</sup></span>
-        </h3>
+        <img src="images/icons/icon-128-128.png" alt="fipe" width="32" style="margin-right: 5px;" />
+        <h3><span> Tabela FIPE</span></h3>
       </div>
     </md-toolbar>
 
@@ -43,9 +41,22 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedTipoVeiculo" required
+              ng-change="vm.selectedFabricanteId = vm.selectedModeloId = vm.selectedAnoModeloId = vm.selectedVeiculo = null" >
+              <md-option ng-repeat="tipo in vm.tipos" value="{{tipo.value}}" placeholder="Tipo do veículo">
+                <md-icon md-font-set="material-icons">{{tipo.icon}}</md-icon>
+                {{tipo.label}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
           <md-input-container class="md-block">
             <label>Selecione o fabricante</label>
-            <md-select ng-model="vm.selectedFabricanteId" ng-change="vm.selectedModeloId = null" required>
+            <md-select
+              ng-model="vm.selectedFabricanteId" md-on-open="vm.loadFabricantes()"
+              ng-show="vm.selectedTipoVeiculo" ng-change="vm.selectedModeloId = null" required>
               <md-option ng-repeat="fabricante in vm.fabricantes" value="{{fabricante.id}}">
                 {{fabricante.name}}
               </md-option>

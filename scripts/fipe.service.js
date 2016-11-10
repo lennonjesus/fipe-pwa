@@ -17,23 +17,23 @@
 
     return service;
 
-    function loadFabricantes() {
-      return $http.get(`${URL_API}/motos/marcas.json`)
+    function loadFabricantes(selectedTipoVeiculo) {
+      return $http.get(`${URL_API}/${selectedTipoVeiculo}/marcas.json`)
         .then(json => json.data);
     }
 
-    function loadModelos(selectedFabricanteId) {
-      return $http.get(`${URL_API}/motos/veiculos/${selectedFabricanteId}.json`)
+    function loadModelos(selectedTipoVeiculo, selectedFabricanteId) {
+      return $http.get(`${URL_API}/${selectedTipoVeiculo}/veiculos/${selectedFabricanteId}.json`)
         .then(json => json.data);
     }
 
-    function loadAnosModelo(selectedFabricanteId, selectedModeloId) {
-      return $http.get(`${URL_API}/motos/veiculo/${selectedFabricanteId}/${selectedModeloId}.json`)
+    function loadAnosModelo(selectedTipoVeiculo, selectedFabricanteId, selectedModeloId) {
+      return $http.get(`${URL_API}/${selectedTipoVeiculo}/veiculo/${selectedFabricanteId}/${selectedModeloId}.json`)
         .then(json => json.data);
     }
 
-    function loadDadosVeiculo(selectedFabricanteId, selectedModeloId, selectedAnoModeloId) {
-      return $http.get(`${URL_API}/motos/veiculo/${selectedFabricanteId}/${selectedModeloId}/${selectedAnoModeloId}.json`)
+    function loadDadosVeiculo(selectedTipoVeiculo, selectedFabricanteId, selectedModeloId, selectedAnoModeloId) {
+      return $http.get(`${URL_API}/${selectedTipoVeiculo}/veiculo/${selectedFabricanteId}/${selectedModeloId}/${selectedAnoModeloId}.json`)
         .then(json => json.data);
     }
 

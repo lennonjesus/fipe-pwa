@@ -1,5 +1,5 @@
 var cachePrefix = 'tabelafipe'
-var cacheVersion = 1;
+var cacheVersion = 2;
 var cacheName = cachePrefix + '-cache-v' + cacheVersion;
 
 var filesToCache = [

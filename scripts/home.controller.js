@@ -4,7 +4,7 @@
 
   angular.module('fipepwa').controller('HomeController', homeController);
 
-  function homeController(FipeService) {
+  function homeController(FipeService, blockUI) {
 
     /*jshint validthis:true */
     var vm = this;
@@ -84,10 +84,17 @@
     }
 
     function loadDadosVeiculo() {
+
+      blockUI.start({
+        message: 'Processando dados...'
+      });
+
       vm.selectedVeiculo = {};
 
       var promise = FipeService.loadDadosVeiculo(vm.selectedTipoVeiculo, vm.selectedFabricanteId, vm.selectedModeloId, vm.selectedAnoModeloId).then(data => {
         vm.selectedVeiculo = data;
+
+        blockUI.stop();
       });
 
       return promise;

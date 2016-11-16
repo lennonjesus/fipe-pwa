@@ -1,5 +1,5 @@
 var cachePrefix = 'tabelafipe'
-var cacheVersion = 3;
+var cacheVersion = 4;
 var cacheName = cachePrefix + '-cache-v' + cacheVersion;
 
 var filesToCache = [
@@ -11,6 +11,8 @@ var filesToCache = [
   'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js',
   'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js',
   'https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular-block-ui/0.2.2/angular-block-ui.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular-block-ui/0.2.2/angular-block-ui.min.js',
   'index.html',
   'fipepwa.ico',
   'build/bundle.js',

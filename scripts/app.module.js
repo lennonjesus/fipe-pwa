@@ -2,6 +2,6 @@
 
   'use strict';
 
-  angular.module('fipepwa', ['ngMaterial']);
+  angular.module('fipepwa', ['ngMaterial', 'blockUI']);
 
 })();
